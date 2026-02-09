@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e  # stop on any error
 
+source "$HOME/anaconda3/etc/profile.d/conda.sh"
+
 # Conda
 conda env create -f environment.yml -y
 conda activate faiss-service

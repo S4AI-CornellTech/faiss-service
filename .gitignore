@@ -11,3 +11,5 @@ go/
 .vscode/
 
 prometheus-cpp/
+*.faiss
+*.npy

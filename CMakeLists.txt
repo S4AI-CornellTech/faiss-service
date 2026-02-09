@@ -2,6 +2,8 @@ project(faiss-server)
 cmake_minimum_required(VERSION 3.18)
 include(ExternalProject)
 
+set(FAISS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../faiss" CACHE PATH "Path to faiss source or install prefix")
+
 ExternalProject_Add(prometheus-cpp
   PREFIX prometheus-cpp
   URL "https://github.com/jupp0r/prometheus-cpp/archive/v0.12.3.tar.gz"
@@ -23,6 +25,7 @@ ExternalProject_Add(faiss-server
   BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/bin"
   INSTALL_COMMAND ""
   CMAKE_CACHE_ARGS
+        -DFAISS_ROOT:PATH=${FAISS_ROOT}
         -Dprometheus-cpp_DIR:PATH=${CMAKE_CURRENT_SOURCE_DIR}/prometheus-cpp/lib/cmake/prometheus-cpp
   DEPENDS prometheus-cpp
 )
